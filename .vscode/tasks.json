@@ -8,7 +8,7 @@
                 "/Zi",
                 "/EHsc",
                 "/nologo",
-                "/Fe${fileDirname}\\.executables\\${fileBasenameNoExtension}.exe",
+                "/Fe${fileDirname}\\..\\.executables\\${fileBasenameNoExtension}.exe",
                 "${file}"
             ],
             "options": {
