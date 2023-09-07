@@ -75,13 +75,29 @@ int calcHCF(int m, int n)
     return hcf;
 }
 
+int euclideanMeth(int m, int n)
+{
+    if (n == 0)
+    {
+        return m;
+    }
+    else
+    {
+        int x;
+        x = euclideanMeth(n, m%n);
+        return x;
+    }
+    
+}
+
 int main()
 {
     int a;
     int b;
     cin >> a;
     cin >> b;
-    cout << calcGCD(a,b);
-    cout << calcHCF(a,b);
+    cout << calcGCD(a,b) << endl;
+    cout << calcHCF(a,b) << endl;
+    cout << euclideanMeth(a,b) << endl;
     return 0;
 }
