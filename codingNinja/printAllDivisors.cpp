@@ -3,24 +3,19 @@
 using namespace std;
 
 int sumOfAllDivisors(int n){
-	vector<int> k;
+	int k = 0;
 	while(n > 0)
 	{
 		for (int i = 1; i <= n; i++)
         {
             if(n % i == 0)
             {
-                k.push_back(i);
+                k += i;
             }
         }
         n--;        
 	}
-    int sum = 0;
-    for (int i = 0; i < k.size(); i++)
-    {
-        sum += k[i];
-    }
-    return sum;    
+    return k;
 }
 
 int main()
