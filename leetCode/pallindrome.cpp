@@ -2,16 +2,20 @@
 
 using namespace std;
 
-bool pallindrome(int n)
+bool pallindrome(int x)
 {
-    int tmp = n;
-    int rev = 0;
+    int tmp = x;
+    unsigned int rev = 0; // for large integers
+    if ( tmp < 0)
+    {
+        return false;
+    }
     while (tmp != 0)
     {
         rev = (rev * 10) + (tmp % 10);
         tmp = tmp / 10;
     }
-    if (rev == n)
+    if (rev == x)
     {
         return true;
     }
