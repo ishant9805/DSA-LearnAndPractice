@@ -2,16 +2,6 @@
 #include<vector>
 using namespace std;
 
-void custom(int i, vector<int> &vec)
-{
-    if (i == 0)
-    {
-        return;
-    }
-    vec.push_back(i);
-    custom(i - 1, vec);
-    return;    
-}
 
 vector<int> printNos(int x) 
 {
