@@ -3,26 +3,16 @@
 
 using namespace std;
 
-vector<long long> fact(long long n, vector<long long> v) 
-{
-    vector<long long> vec;
-    if (n == 1)
-    {
-        vec.push_back(1);
-        return vec;
-    }
-    else 
-    {
-        
-    }
-    return vec;
-}
-
 vector<long long> factorialNumbers(long long n) 
 {
     vector<long long> vec;
-    long long int mnc = 1;
-    vec = fact(mnc, vec);
+    long long ff = 1;
+    for (int i = 1; ff * i <= n; i++)
+    {
+        ff = ff * i;
+        vec.push_back(ff);
+    }
+    
     return vec;
 }
 
