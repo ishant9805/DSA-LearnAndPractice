@@ -1,16 +1,21 @@
 #include<iostream>
 using namespace std;
 
-long long sumFirstN(long long n) {
+long long sumFirstNRec(long long n) {
     long long ab = 0;
     if (n == 1)
     {
         ab = 1;
         return ab;
     }
-    ab = sumFirstN(n - 1);
+    ab = sumFirstNRec(n - 1);
     ab += n;
     return ab;
+}
+
+long long sumFirstN(long long n)
+{
+    return (n * (n + 1)) / 2;
 }
 
 int main()
