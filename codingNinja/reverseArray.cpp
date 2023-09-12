@@ -8,7 +8,7 @@ vector<int> reverseArray(int n, vector<int> &nums)
     // [0, 1, 2, 3, 4, 5] n = 6
     for (int i = 0; i < n / 2; i++)
     {
-        tmp = nums[i];++
+        tmp = nums[i];
         nums[i] = nums[n - i - 1];
         nums[n - i - 1] = tmp;
     }
