@@ -10,8 +10,7 @@ bool isPal(int start, int end, string& str)
         {
             return false;
         }
-        if(!isPal(start + 1, end - 1, str))
-            return false;
+        return isPal(start + 1, end - 1, str);
     }
     return true;
 }
@@ -22,7 +21,7 @@ bool isPalindrome(string& str) {
 
 int main()
 {
-    string n = "skdpnyegmds";
+    string n = "racecar";
     // cin >> n;
     bool a = isPalindrome(n);
     cout << a;
