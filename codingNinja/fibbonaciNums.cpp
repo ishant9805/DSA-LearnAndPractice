@@ -39,6 +39,7 @@ vector<int> generateFibonacciNumbers(int n)
     }
 }
 
+// An easy question
 int main()
 {
     int n;
