@@ -3,40 +3,40 @@
 #include<array>
 using namespace std;
 
-// int findDuplicate(vector<int>& arr, int n){
-// 	for (int i = 0; i < n; i++)
-// 	{
-//         int j = 0;
-// 		while (j < i)
-//         {
-//             if (arr[i] == arr[j])
-//             {
-//                 return arr[i];
-//             }
-//             j++;
-//         }
-// 	}
-//     return -1;
-// }
-
-int findDuplicate(vector<int>& arr, int n)
-{
-    int hashArray[n] = 0;
-    for (int i = 0; i < n; i++)
-    {
-        hashArray[arr[i]]++;
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        if (hashArray[i] > 1)
+int findDuplicate(vector<int>& arr, int n){
+	for (int i = 0; i < n; i++)
+	{
+        int j = 0;
+		while (j < i)
         {
-            return i;
+            if (arr[i] == arr[j])
+            {
+                return arr[i];
+            }
+            j++;
         }
-        
-    }
-    
+	}
+    return -1;
 }
+
+// int findDuplicate(vector<int>& arr, int n)
+// {
+//     int hashArray[n] = 0;
+//     for (int i = 0; i < n; i++)
+//     {
+//         hashArray[arr[i]]++;
+//     }
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (hashArray[i] > 1)
+//         {
+//             return i;
+//         }
+        
+//     }
+    
+// }
 
 int main()
 {
