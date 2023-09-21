@@ -2,25 +2,23 @@
 #include<vector>
 using namespace std;
 
-
-// Looped Solution
-// void insertionSort(vector<int>& nums)
-// {
-//     int size = nums.size();
-//     int tmp = 0;
-//     int r = 0;
-//     for (int i = 0; i < size; i++)
-//     {
-//         for (int j = i; j > 0; j--)
-//         {
-//             if (nums[j] < nums[j-1])
-//             {
-//                 swap(nums[j], nums[j - 1]);
-//             }
+void insertionSort(vector<int>& nums)
+{
+    int size = nums.size();
+    int tmp = 0;
+    int r = 0;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i; j > 0; j--)
+        {
+            if (nums[j] < nums[j-1])
+            {
+                swap(nums[j], nums[j - 1]);
+            }
             
-//         }         
-//     }
-// }
+        }         
+    }
+}
 
 int main()
 {
