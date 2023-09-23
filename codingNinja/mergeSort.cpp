@@ -3,6 +3,7 @@
 using namespace std;
 
 // Vectorial Solution
+// Easy solution
 
 void merge(vector<int>& arr, int low, int mid, int high) {
     vector<int> temp;
