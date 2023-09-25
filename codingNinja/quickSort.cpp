@@ -18,13 +18,13 @@ int partitionArray(int input[], int start, int end) {
         }
         if (i < j)
         {
-            cout << "input[i]: " << input[i] << " | input[j]: " << input[j] << endl;
+            // cout << "input[i]: " << input[i] << " | input[j]: " << input[j] << endl;
             swap(input[i], input[j]);
         }
     }
-    cout << "[Outside Loop] input[i]: " << input[i] << " | input[j]: " << input[j] << endl;
+    // cout << "[Outside Loop] input[i]: " << input[i] << " | input[j]: " << input[j] << endl;
     swap(input[start], input[j]);
-    cout << "i: " << i << " | j: " << j << endl;
+    // cout << "i: " << i << " | j: " << j << endl;
     return j;
 }
 
