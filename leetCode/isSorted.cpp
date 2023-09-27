@@ -2,36 +2,36 @@
 #include<vector>
 using namespace std;
 
-vector<int> rotate(vector<int>& nums, int rotNum)
-{
-    vector<int> rot(nums.size());
-    for (int i = 0; i < nums.size(); i++)
-    {
-        int k = i + rotNum;
-        if (k < nums.size())
-        {
-            rot[i] = nums[k];
-        }
-        else{
-            k = k - nums.size();
-            rot[i] = nums[k];
-        }
+// vector<int> rotate(vector<int>& nums, int rotNum)
+// {
+//     vector<int> rot(nums.size());
+//     for (int i = 0; i < nums.size(); i++)
+//     {
+//         int k = i + rotNum;
+//         if (k < nums.size())
+//         {
+//             rot[i] = nums[k];
+//         }
+//         else{
+//             k = k - nums.size();
+//             rot[i] = nums[k];
+//         }
         
-    }
-    return rot;
-}
+//     }
+//     return rot;
+// }
 
-bool isSorted(vector<int> a) {
-    for (int i = 0; i < a.size() - 1; i++)
-    {
-        if (!(a[i] <= a[i + 1]))
-        {
-            return false;
-        }
+// bool isSorted(vector<int> a) {
+//     for (int i = 0; i < a.size() - 1; i++)
+//     {
+//         if (!(a[i] <= a[i + 1]))
+//         {
+//             return false;
+//         }
         
-    }
-    return true;
-}
+//     }
+//     return true;
+// }
 
 // bool check(vector<int>& nums) {
 //     for (int i = 0; i < nums.size(); i++)
@@ -46,40 +46,43 @@ bool isSorted(vector<int> a) {
 //     }
 //     return false;
 // }
-// bool isSorted(vector<int> a) {
-//     int c = 0;
-//     for (int i = 0; i < a.size() - 1; i++)
-//     {
-//         if (!(a[i] <= a[i + 1]))
-//         {
-//             c++;
-//         }
-//     }
 
-//     if (c > 1)
-//     {
-//         return false;
-//     }
-//     return true;
-// }
-
-bool check(vector<int>& a) {
-    int i = 0;
-    while (i < a.size())
+bool isSorted(vector<int> a) {
+    int c = 0;
+    for (int i = 0; i < a.size() - 1; i++)
     {
-        vector<int> temp;
-        temp = rotate(a, i);
-        if (!isSorted(temp))
+        if (a[i] > a[i + 1])
         {
-            i++;
+            c++;
         }
-        else {
-            return true;
-        }
-
     }
-    return false;
+
+    if (a[0] < a[a.size() - 1])
+    {
+        c++;
+    }
+    
+
+    return c <= 1;
 }
+
+// bool check(vector<int>& a) {
+//     int i = 0;
+//     while (i < a.size())
+//     {
+//         vector<int> temp;
+//         temp = rotate(a, i);
+//         if (!isSorted(temp))
+//         {
+//             i++;
+//         }
+//         else {
+//             return true;
+//         }
+
+//     }
+//     return false;
+// }
 
 
 int main()
