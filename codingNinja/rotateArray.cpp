@@ -20,7 +20,7 @@ using namespace std;
 //     }
 //     return rot;
 // }
-
+// Optimal Solution
 vector<int> rotateArray(vector<int> &nums, int n) {
     int tmp = nums[0];
     for (int i = 0; i < n - 1; i++)
