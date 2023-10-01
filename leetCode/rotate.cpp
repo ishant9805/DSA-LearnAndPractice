@@ -14,10 +14,8 @@ using namespace std;
 
 void rotate(vector<int>& nums, int k) {
     int n = nums.size();
-    if (n == 1)
-        return;
     vector<int> tmp;
-    int l = n - k;
+    int l = n % k;
     for (int i = l; i < n; i++)
     {
         tmp.push_back(nums[i]);
