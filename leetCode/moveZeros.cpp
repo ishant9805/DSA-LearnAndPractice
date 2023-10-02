@@ -11,8 +11,15 @@ void moveZeroes(vector<int>& nums) {
         {
             nums.erase(nums.begin() + i);
             i--;
+            k++;
+            n--;
         }
     }
+    for (int i = 0; i < k; i++)
+    {
+        nums.push_back(0);
+    }
+    
 }
 
 int main()
