@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+// Problem link: https://www.codingninjas.com/studio/problems/rotate-array_1230543
+
 vector<int> rotateArray(vector<int>arr, int k) {
     vector<int> tmp;
     int n = arr.size();
