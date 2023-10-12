@@ -53,37 +53,59 @@ using namespace std;
 // }
 
 // A more better approach
+// int longestSubarrayWithSumK(vector<int> a, long long k) {
+//     // Write your code here
+//     map<long long, int> preSumMap;
+//     long long sum = 0;
+//     int maxLen = 0;
+//     for (int i = 0; i < a.size(); i++)
+//     {
+//         sum += a[i];
+//         if (sum == k)
+//         {
+//             maxLen = max(maxLen, i + 1);
+//         }
+//         long long rem = sum - k;
+//         if (preSumMap.find(rem) != preSumMap.end())
+//         {
+//             int len = i - preSumMap[rem];
+//             maxLen = max(maxLen, len);
+//         }
+//         if (preSumMap.find(sum) == preSumMap.end())
+//         {
+//             preSumMap[sum] = i;
+//         }
+//     }
+//     return maxLen;
+// }
+
+
+// Trying two pointer method
 int longestSubarrayWithSumK(vector<int> a, long long k) {
-    // Write your code here
-    map<long long, int> preSumMap;
-    long long sum = 0;
+    int p1 = 0;
+    int p2 = 0;
+    int sum = a[0];
     int maxLen = 0;
-    for (int i = 0; i < a.size(); i++)
+    int size = a.size();
+    while (p1 < size && p2 < size)
     {
-        sum += a[i];
-        if (sum == k)
+        while (p2 <= p1 && sum > k)
         {
-            maxLen = max(maxLen, i + 1);
+            sum -= a[p2];
+            p2++;
         }
-        long long rem = sum - k;
-        if (preSumMap.find(rem) != preSumMap.end())
-        {
-            int len = i - preSumMap[rem];
-            maxLen = max(maxLen, len);
-        }
-        if (preSumMap.find(sum) == preSumMap.end())
-        {
-            preSumMap[sum] = i;
-        }
+        if (sum == k) maxLen = max(maxLen, p1 - p2 + 1);
+        p1++;
+        if (p1 < size) sum += a[p1];
     }
     return maxLen;
 }
 
 int main()
 {
-    vector<int> v = {1,2,3,1,1,1,1};
-    // vector<int> v = {1,2,1,3};
-    int a = longestSubarrayWithSumK(v, 3);
+    // vector<int> v = {1,2,3,1,1,1,1};
+    vector<int> v = {1,2,1,3};
+    int a = longestSubarrayWithSumK(v, 2);
     cout << a << endl;
     return 0;
 }
