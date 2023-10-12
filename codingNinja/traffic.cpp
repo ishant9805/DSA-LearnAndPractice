@@ -5,30 +5,35 @@ using namespace std;
 int traffic(int n, int m, vector<int> vehicle) {
     int c1 = 0;
     int c0 = 0;
-	for (int i = 0; i < n; i++)
+    int ans = INT_MIN;
+    int zero = 0;
+	
+    while (c1 < n)
     {
-        if (vehicle[i] == 1)
+        if (vehicle[c1] == 0)
         {
-            c1++;
+            zero++;
         }
-        else 
+        while (zero > m)
         {
-            c0++;
+            if (vehicle[c0] == 0)
+            {
+                zero--;
+                c0++;
+            }
+
         }
-        
-    }
-    if (m > c0)
-    {
-        return n;
+        ans = max(ans, c1 - c0 + 1);
+        c1++;
     }
     
-    return c1 + m;
+    return ans;
 }
 
 int main()
 {
-    vector<int> v = {1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0};
-    int n = traffic(25, 17, v);
+    vector<int> v = {0, 1, 0, 0, 1, 0};
+    int n = traffic(6, 3, v);
     cout << n << endl;
     return 0;
 }
