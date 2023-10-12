@@ -80,11 +80,11 @@ using namespace std;
 // }
 
 
-// Trying two pointer method
+// Trying two pointer method, Thanks to Striver @ youtube.com
 int longestSubarrayWithSumK(vector<int> a, long long k) {
     int p1 = 0;
     int p2 = 0;
-    int sum = a[0];
+    long long sum = a[0];
     int maxLen = 0;
     int size = a.size();
     while (p1 < size && p2 < size)
