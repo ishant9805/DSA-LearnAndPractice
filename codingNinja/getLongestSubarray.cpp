@@ -1,23 +1,21 @@
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 
 int getLongestSubarray(vector<int>& nums, int k){
-    // Two pointer solution
-    int left = 0; int right = 0; int n = nums.size();
-    long long sum0 = nums[0]; int maxLen = 0;
-    while (left < n && right < n)
+    // Dictionary method
+    map<long long, int> preSumMap;
+    long long sum = 0; int maxLen = 0;
+    for (int i = 0; i < nums.size(); i++)
     {
-        if (sum0 > k && left < right)
-        {
-            sum0 -= nums[left];
-            left++;
-        }
-        if (nums[right + 1] == 0) maxLen++;
-        if (sum0 == k) maxLen = max(maxLen, right - left + 1);
-        right++;
-        if (right < n) sum0 += nums[right];
+        sum +=nums[i];
+        if (sum == k) maxLen = max(maxLen, i + 1);
+        long long rem = sum - k;
+        if (preSumMap.find(rem) != preSumMap.end()) maxLen = max(maxLen, i - preSumMap[rem]);
+        if (preSumMap.find(sum) == preSumMap.end()) preSumMap[sum] = i;
     }
+    
     return maxLen;
 }
 
