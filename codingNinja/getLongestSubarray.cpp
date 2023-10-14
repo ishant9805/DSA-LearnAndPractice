@@ -13,6 +13,7 @@ int getLongestSubarray(vector<int>& nums, int k){
             sum0 -= nums[left];
             left++;
         }
+        if (nums[right + 1] == 0) maxLen++;
         if (sum0 == k) maxLen = max(maxLen, right - left + 1);
         right++;
         if (right < n) sum0 += nums[right];
@@ -22,8 +23,8 @@ int getLongestSubarray(vector<int>& nums, int k){
 
 int main()
 {
-    vector<int> v = {2,3,5};
-    int x = getLongestSubarray(v, 5);
+    vector<int> v = {-1, 0, 1, 1, -1, -1, 0};
+    int x = getLongestSubarray(v, 0);
     cout << "Number of elements in longest subarray: " << x << endl;
     return 0;
 }
