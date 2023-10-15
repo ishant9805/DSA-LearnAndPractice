@@ -1,22 +1,36 @@
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 
 vector<int> twoSum(vector<int>& nums, int target) {
-    int a = 0;
-    int b = 0;
-    for (int i = 0; i < nums.size()-1; i++)
+    // Double loop method
+    // int a = 0;
+    // int b = 0;
+    // for (int i = 0; i < nums.size()-1; i++)
+    // {
+    //     for (int j = i + 1; j < nums.size(); j++)
+    //     {
+    //         if (nums[i] + nums[j] == target)
+    //         {
+    //             a = i;
+    //             b = j;
+    //         }
+    //     }
+    // }
+    // return {a, b};
+    // Hashmap method
+    map<int, int> mp; int diff = 0; int n = nums.size();
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < nums.size(); j++)
+        diff = target - nums[i];
+        if (mp.find(diff) != mp.end())
         {
-            if (nums[i] + nums[j] == target)
-            {
-                a = i;
-                b = j;
-            }
+            return {mp[diff], i};
         }
+        mp.insert({nums[i], i});        
     }
-    return {a, b};
+    return {-1,-1};
 }
 
 int main()
