@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "utility": "cpp",
         "set": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "algorithm": "cpp"
     }
 }

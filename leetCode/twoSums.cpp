@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<map>
+#include<algorithm>
 using namespace std;
 
 vector<int> twoSum(vector<int>& nums, int target) {
@@ -20,17 +21,30 @@ vector<int> twoSum(vector<int>& nums, int target) {
     // }
     // return {a, b};
     // Hashmap method
-    map<int, int> mp; int diff = 0; int n = nums.size();
-    for (int i = 0; i < n; i++)
+    // map<int, int> mp; int diff = 0; int n = nums.size();
+    // for (int i = 0; i < n; i++)
+    // {
+    //     diff = target - nums[i];
+    //     if (mp.find(diff) != mp.end())
+    //     {
+    //         return {mp[diff], i};
+    //     }
+    //     mp.insert({nums[i], i});        
+    // }
+    // return {-1,-1};
+    //
+    // Two -pointer method 🙂
+    int n = nums.size();
+    sort(nums.begin(), nums.begin() + n);
+    int left = 0; int right = n - 1; int sum = 0;
+    while (left < right)
     {
-        diff = target - nums[i];
-        if (mp.find(diff) != mp.end())
-        {
-            return {mp[diff], i};
-        }
-        mp.insert({nums[i], i});        
+        sum = nums[left] + nums[right];
+        if (sum == target) return {left, right};
+        if (sum > target) right--;
+        if (sum < target) left++;
     }
-    return {-1,-1};
+    return {-1, -1};
 }
 
 int main()
