@@ -45,12 +45,6 @@ using namespace std;
 string read(int n, vector<int> book, int target)
 {
     sort(book.begin(), book.begin() + n);
-    cout << "[";
-    for (int i = 0; i < book.size() - 1; i++)
-    {
-       cout << book[i] << ", ";
-    }
-    cout << book[book.size() - 1] << "]" << endl;
     int left = 0; int right = n - 1; int sum = 0;
     while (left < right)
     {
