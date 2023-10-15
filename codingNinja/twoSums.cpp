@@ -1,23 +1,43 @@
 #include<iostream>
 #include<vector>
+#include<map>
 using namespace std;
 
+// Loop method
+// string read(int n, vector<int> book, int target)
+// {
+//     int left = 0; int right = 0; int sum = 0;
+//     while (left < n - 1) {
+//         right = left + 1;
+//         while (right < n)
+//         {
+//             sum = book[left] + book[right];
+//             if (sum == target)
+//                 return "Yes";
+//             right++;
+//         }
+//         left++;
+//     }
+//     return "No";
+// }
+
+// Hashmap method
+// This function takes three input (size, arr, target) and returns YES or NO, 
+// if target exist as sum of two elements in given arr.
+// E.g. string result = read(arr_size:int, arr:vector<int>, target:int)
 string read(int n, vector<int> book, int target)
 {
-    int left = 0; int right = 0; int sum = 0;
-    while (left < n - 1) {
-        right = left + 1;
-        while (right < n)
+    map<int, int> mp; int diff = 0;
+    for (int i = 0; i < n; i++)
+    {
+        diff = target - book[i];
+        if (mp.find(diff) != mp.end())
         {
-            sum = book[left] + book[right];
-            if (sum == target)
-                return "Yes";
-            right++;
+            return "YES";
         }
-        left++;
+        mp.insert({book[i], i});        
     }
-    
-    return "No";
+    return "NO";
 }
 
 int main()
