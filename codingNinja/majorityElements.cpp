@@ -9,13 +9,7 @@ int majorityElement(vector<int> v) {
     int n = v.size();
     for (int i = 0; i < n; i++)
     {
-        if (mp.find(v[i]) != mp.end())
-        {
-            mp[v[i]] += 1;
-        }
-        else {
-            mp[v[i]] = 1;
-        }
+        mp[v[i]]++;
     }
     pair<int, int> max = {0, 0};
     for (auto it:mp)
