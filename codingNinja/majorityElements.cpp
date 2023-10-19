@@ -3,7 +3,8 @@
 #include<unordered_map>
 using namespace std;
 
-int majorityElement(vector<int> v) {
+// Hashmap method
+int majorityElementBetter(vector<int> v) {
 	// Write your code here
     unordered_map<int, int> mp;
     int n = v.size();
@@ -24,9 +25,30 @@ int majorityElement(vector<int> v) {
     return max.first;
 }
 
+// Moore's Voting Algorithm
+int majorityElement(vector<int> v) {
+	// Write your code here
+    int el; int cnt = 0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (cnt == 0)
+        {
+            el = v[i];
+        }
+        if (v[i] == el) {
+            cnt++;
+        }
+        else {
+            cnt--;
+        }
+    }
+    
+    return el;
+}
+
 int main()
 {
-    vector<int> v = {2,2,1,3,1,1,3,1,1};
+    vector<int> v = {7,7,5,7,5,1,5,7,5,5,7,7,5,5,5,5};
     int n = majorityElement(v);
     cout << n << endl;
     return 0;
