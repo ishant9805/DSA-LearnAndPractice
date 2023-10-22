@@ -5,12 +5,14 @@ using namespace std;
 int bestTimeToBuyAndSellStock(vector<int>&prices) {
     // Write your code here.
     int max_profit = 0;
+    int min_price = 1e9;
     for (int it = 0; it < prices.size(); it++)
     {
-        for (int i = it + 1; i < prices.size(); i++)
+        if (min_price > prices[it])
         {
-            max_profit = max(max_profit, prices[i] - prices[it]);
+            min_price = prices[it];
         }
+        max_profit = max(max_profit, prices[it] - min_price);
     }
     
     return max_profit;
