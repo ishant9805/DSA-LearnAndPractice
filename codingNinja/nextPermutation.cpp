@@ -8,10 +8,9 @@ using namespace std;
 //     return A;
 // }
 
-vector<int> nextGreaterPermutation(vector<int> &A)
+vector<int> nextGreaterPermutation(vector<int> &A, int n)
 {
     int bp = -1;
-    int n = A.size();
     pair<int,int> mini = {1e9, 0};
     for (int i = n - 1; i > 0; i--)
     {
@@ -43,7 +42,7 @@ vector<int> nextGreaterPermutation(vector<int> &A)
 int main()
 {
     vector<int> v = {1,3,2};
-    v = nextGreaterPermutation(v);
+    v = nextGreaterPermutation(v, v.size());
     cout << "[";
     for (int i = 0; i < v.size() - 1; i++)
     {
