@@ -26,15 +26,14 @@ vector<int> nextPermutation(vector<int> &A)
     if (bp == -1) {
         reverse(A.begin(), A.end());
     } else {
-        for (int i = bp + 1; i < n; i++)
+        for (int i = n-1; i > bp; i--)
         {
-            if (mini.first > A[i] && A[i] > A[bp])
+            if (A[i] > A[bp])
             {
-                mini.first = A[i];
-                mini.second = i;
+                swap(A[i], A[bp]);
+                break;
             }
         }
-        swap(A[bp], A[mini.second]);
         reverse(A.begin() + bp + 1, A.end());
     }
     return A;
@@ -43,7 +42,7 @@ vector<int> nextPermutation(vector<int> &A)
 
 int main()
 {
-    vector<int> v = {2,1,5,4,3,0,0};
+    vector<int> v = {2,1,5,4,3,0,0}; //[2, 3, 0, 0, 1, 4, 5]
     v = nextPermutation(v);
     cout << "[";
     for (int i = 0; i < v.size() - 1; i++)
