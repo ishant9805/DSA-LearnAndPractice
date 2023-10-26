@@ -3,15 +3,47 @@
 #include<algorithm>
 using namespace std;
 
-vector<int> nextPermutation(vector<int> &A) {
-    next_permutation(A.begin(), A.end());
+// vector<int> nextPermutation(vector<int> &A) {
+//     next_permutation(A.begin(), A.end());
+//     return A;
+// }
+
+// Trying to solve
+vector<int> nextPermutation(vector<int> &A, int n)
+{
+    int bp = -1;
+    pair<int,int> mini = {1e9, 0};
+    for (int i = n - 1; i > 0; i--)
+    {
+        if (A[i] > A[i-1])
+        {
+            bp = i - 1;
+            break;
+        }
+        
+    }
+    if (bp == -1) {
+        reverse(A.begin(), A.end());
+    } else {
+        for (int i = bp + 1; i < n; i++)
+        {
+            if (mini.first > A[i] && A[i] > A[bp])
+            {
+                mini.first = A[i];
+                mini.second = i;
+            }
+        }
+        swap(A[bp], A[mini.second]);
+        reverse(A.begin() + bp + 1, A.end());
+    }
     return A;
+
 }
 
 int main()
 {
-    vector<int> v = {1,3,2};
-    v = nextPermutation(v);
+    vector<int> v = {2,1,5,4,3,0,0}; // [2, 3, 0, 0, 1, 4, 5]
+    v = nextPermutation(v, v.size());
     cout << "[";
     for (int i = 0; i < v.size() - 1; i++)
     {
