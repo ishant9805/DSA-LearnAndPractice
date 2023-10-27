@@ -40,7 +40,7 @@ vector<int> superiorElements(vector<int>&a) {
         {
             max = a[i];
             ldrs.push_back(a[i]);
-        }`
+        }
         
     }
     return ldrs;
