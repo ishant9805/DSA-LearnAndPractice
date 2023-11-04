@@ -5,17 +5,18 @@ using namespace std;
 
 void rotate(vector<vector<int>> &mat){
 	// Write your code here.
-    vector<vector<int>> new_mat(mat.size());
-    for (int coli = 0; coli < mat.size(); coli++)
+    int n = mat.size();
+    vector<vector<int>> new_mat(n);
+    for (int coli = 0; coli < n; coli++)
     {
-        for (int row = mat.size() - 1; row >= 0; row--)
+        for (int row = n - 1; row >= 0; row--)
         {
             new_mat[coli].push_back(mat[row][coli]);
         }
     }
-    for (int rowi = 0; rowi < mat.size(); rowi++)
+    for (int rowi = 0; rowi < n; rowi++)
     {
-        for (int icol = 0; icol < mat.size(); icol++)
+        for (int icol = 0; icol < n; icol++)
         {
             mat[rowi][icol] = new_mat[rowi][icol];
         }
