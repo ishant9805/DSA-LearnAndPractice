@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-
+#include<set>
 using namespace std;
 
 int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
@@ -16,8 +16,6 @@ int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
             summ += arr[i];
             if (summ == k) {
                 num++;
-                left++;
-                right++;
             } else if (summ > k)
             {
                 left++;
