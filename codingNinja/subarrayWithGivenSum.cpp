@@ -1,38 +1,49 @@
 #include<iostream>
 #include<vector>
-#include<set>
+#include<unordered_map>
 using namespace std;
 
-int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
-    int num = 0;
-    int left = 0, right = 1;
-    int summ = 0;
-    while (left <= right && right < arr.size())
-    {
-        summ = 0;
-        // 6 3 5 2
-        for (int i = left; i <= right; i++)
-        {
-            summ += arr[i];
-            if (summ == k) {
-                num++;
-            } else if (summ > k)
-            {
-                left++;
-            }
+// Brute force approach
+// int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
+//     int num = 0;
+//     int left = 0, right = 1;
+//     for (left = 0; left < arr.size(); left++)
+//     {
+//         int sum = 0;
+//         for (right = left; right < arr.size(); right++)
+//         {
+//             sum += arr[right];
+//             if (sum == k) {
+//                 num++;
+//             }
             
-        }
-        right++;
-    }
+//         }
+        
+//     }
     
-    return num;
+    
+//     return num;
+// }
+
+int findAllSubarraysWithGivenSum(vector<int> &arr, int k) {
+    unordered_map<int, int> umpp;
+    umpp[0] = 1;
+    int preSum = 0, count = 0 ;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        preSum += arr[i];
+        int rmv = preSum - k; // {1,2,3,-3,1,1,1,4,2,-3};
+        count += umpp[rmv];
+        umpp[preSum] += 1;
+    }
+    return count;
 }
 
 int main()
 {
-    vector<int> v = {6,3,5,2};
+    vector<int> v = {1,2,3,-3,1,1,1,4,2,-3};
     int k;
-    k = findAllSubarraysWithGivenSum(v, 9);
+    k = findAllSubarraysWithGivenSum(v, 3);
     cout << k << endl;
     return 0;
 }
