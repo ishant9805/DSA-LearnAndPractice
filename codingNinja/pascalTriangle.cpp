@@ -2,6 +2,7 @@
 #include<vector>
 using namespace std;
 
+// Solved on my own with 99% efficiency
 vector<vector<int>> pascalTriangle(int N) {
     vector<vector<int>> ans = {{1}};
     for (int i = 1; i <= N; i++)
