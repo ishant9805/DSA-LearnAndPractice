@@ -51,7 +51,8 @@ vector<vector<int>> fourSum(vector<int>& nums, int target) {
                 if (sum > target) l--;
                 else if (sum < target) k++;
                 else {
-                    res.push_back({nums[i], nums[j], nums[k], nums[l]});
+                    vector<int> tmp = {nums[i], nums[j], nums[k], nums[l]};
+                    res.push_back(tmp);
                     k++, l--;
                     while(nums[k] == nums[k - 1]) k++;
                     while(nums[l] == nums[l + 1]) l--;
