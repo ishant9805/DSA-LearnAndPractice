@@ -6,6 +6,7 @@
         "set": "cpp",
         "map": "cpp",
         "algorithm": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "numeric": "cpp"
     }
 }
