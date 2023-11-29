@@ -2,17 +2,37 @@
 #include<vector>
 
 using namespace std;
-
-int lowerBound(vector<int> arr, int n, int x) {
-	for (int i = 0; i < n; i++)
-    {
-        if (arr[i] >= x)
-        {
-            return i;
-        }
+// Brute force approach
+// int lowerBound(vector<int> arr, int n, int x) {
+// 	for (int i = 0; i < n; i++)
+//     {
+//         if (arr[i] >= x)
+//         {
+//             return i;
+//         }
         
+//     }
+//     return n;
+// }
+
+// BSearch Method
+int lowerBound(vector<int> arr, int n, int x) {
+    int ans = n;
+    int low = 0, high = n -1;
+    int mid = (low + high) / 2;
+    while (low < high)
+    {
+        mid = (low + high) / 2;
+        if (arr[mid] >= x)
+        {
+            high = mid;
+            ans = mid;
+        } else {
+            low = mid + 1;
+        }
     }
-    return n;
+    return ans;
+
 }
 
 int main()
