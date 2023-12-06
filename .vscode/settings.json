@@ -7,6 +7,7 @@
         "map": "cpp",
         "algorithm": "cpp",
         "ostream": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "xutility": "cpp"
     }
 }
