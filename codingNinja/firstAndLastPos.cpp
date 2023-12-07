@@ -2,35 +2,19 @@
 #include<vector>
 
 using namespace std;
-// Used BS like in upper and lower bound
+// Used STL in C++
 pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k)
 {
     // Write your code here
     pair<int, int> ans = {-1, -1};
-    int low = 0, high = n - 1;
-    while(low < high) {
-        int mid = (low + high) / 2;
-        if (arr[mid] == k)
-        {
-            high = mid;
-            ans.first = mid;
-        } else {
-            low = mid + 1;
-        }
-        
+    ans.first = lower_bound(arr.begin(), arr.end(), k) - arr.begin();
+    ans.second = upper_bound(arr.begin(), arr.end(), k) - arr.begin() - 1;
+    if(arr[ans.first] != k) {
+        ans.first = -1;
     }
-    cout << "Low: " << low << endl;
-    for (int i = low; i < n && i > 0; i++)
-    {
-        if (arr[i] != k)
-        {
-            ans.second = i - 1;
-        } else {
-            ans.second = i;
-        }
-        
+    if(arr[ans.second] != k) {
+        ans.second = -1;
     }
-    
     return ans;
 }
 
