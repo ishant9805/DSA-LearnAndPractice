@@ -38,6 +38,9 @@ int main()
     v = {2, 5, 6, 19, 24, 25, 26, 26, 32, 42, 44};
     k = upperBound(v, 42, v.size()); // 3
     cout << k << endl;
+    v = {0, 0, 1, 1, 2, 2, 2, 2};
+    k = upperBound(v, 2, v.size());
+    cout << k << endl;
     
     return 0;
 }
