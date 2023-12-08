@@ -4,27 +4,56 @@
 using namespace std;
 
 // Brute force approach
-int count(vector<int> &arr, int n, int x) {
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
+// int count(vector<int> &arr, int n, int x) {
+//     int cnt = 0;
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (arr[i] == x)
+//         {
+//             cnt++;
+//         }
+        
+//     }
+//     return cnt;
+// }
+
+// BS approach
+int count(vector<int>& arr, int n, int x) {
+	int low = 0, high = n - 1;
+    int ocrLast = -1;
+    // Last occurence
+    while (low <= high)
     {
-        if (arr[i] == x)
+        int mid = (low + high) / 2;
+        if (arr[mid] == x)
         {
-            cnt++;
+            ocrLast = mid;
+            low = mid + 1;
+        } else if (arr[mid] > x)
+        {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    // First Occurence
+    int ocrFst = -1;
+    low = 0, high = n - 1;
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (arr[mid] >= x)
+        {
+            ocrFst = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
         }
         
     }
-    return cnt;
+    if (ocrLast == -1) return 0;
+    return ocrLast - ocrFst + 1;
 }
-
-// int count(vector<int>& arr, int n, int x) {
-// 	int low = 0, high = n - 1;
-//     while (low < high)
-//     {
-        
-//     }
-    
-// }
 
 int main()
 {
