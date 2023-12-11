@@ -20,7 +20,7 @@ using namespace std;
 // BS method
 int findMin(vector<int>& arr){
 	int ans = 1e9, low = 0, high = arr.size() - 1;
-    while (low < high) {
+    while (low <= high) {
         int mid = (low + high) / 2;
         // if left part is sorted
         if (arr[low] <= arr[mid]) {
