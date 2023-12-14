@@ -19,6 +19,8 @@ int findPeakElement(vector<int> &arr) {
     return -1;
 }
 
+// Binary Search
+
 int main()
 {
     vector<int> v = {1,8,1,5,3};
