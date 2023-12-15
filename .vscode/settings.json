@@ -8,6 +8,7 @@
         "algorithm": "cpp",
         "ostream": "cpp",
         "numeric": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "cmath": "cpp"
     }
 }

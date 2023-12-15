@@ -1,21 +1,23 @@
 #include<iostream>
 #include<vector>
+#include<corecrt.h>
 
 using namespace std;
 
-// Brute Force
+// Using Binary Search
 int floorSqrt(int n) {
-    int l = 0;
-    for (int i = 0; i < n; i++)
+    int l = 1, h = n;
+    while (l <= h)
     {
-        if (pow(i,2) < n) {
-            l = i;
-        }
-        else if (pow(i,2) == n) {
-            return i;
+        long long m = (l+h)/2;
+        long long v = m * m;
+        if (v <= (long long)(n)) {
+            l = m + 1;
+        } else {
+            h = m - 1;
         }
     }
-    return l;
+    return h;
 }
 
 int main()
