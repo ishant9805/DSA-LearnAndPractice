@@ -3,44 +3,50 @@
 
 using namespace std;
 
-int roseGarden(vector<int> arr, int k, int m) {
-    int mini = 1e9;
-    int n = arr.size();
-    vector<int> pass;
-    for (int j = 0; j < n; j++)
+pair<int, int> minMax(vector<int> arr, int n) {
+    pair<int, int> mM = {INT_MAX,INT_MIN};
+    for (int i = 0; i < n; i++)
     {
-        for (int k = 0; k < pass.size(); k++)
+        mM.first = min(mM.first, arr[i]);
+        mM.second = max(mM.second, arr[i]);
+    }
+    return mM;
+}
+
+int check(vector<int> arr, int nthDay, int flowers) {
+    int tmp = 0;
+    int bq_cnt = 0;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] <= nthDay)
         {
-            if (arr[j] == pass[k])
-            {
-                continue;
-            }
-            
+            tmp++;
+        } else{
+            tmp = 0;
         }
-        
-        /* code */
-        int tmp = 0;
-        int bq_cnt = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] <= arr[j])
-            {
-                tmp++;
-            } else{
-                tmp = 0;
-            }
-            if (tmp == k) {
-                tmp = 0;
-                bq_cnt ++;
-            }
-        }
-        if (bq_cnt >= m) {
-            mini = min(mini, arr[j]);
-        } else {
-            pass.push_back(arr[j]);
+        if (tmp == flowers) {
+            tmp = 0;
+            bq_cnt ++;
         }
     }
-    if (mini != 1e9) return mini;
+    return bq_cnt;
+}
+
+int roseGarden(vector<int> arr, int k, int m) {
+    int mini = 0;
+    int n = arr.size();
+    pair<int, int> minMa = minMax(arr, n);
+    while (minMa.first <= minMa.second)
+    {
+        int j = (minMa.first + minMa.second) / 2;
+        if (check(arr, j, k) >= m) {
+            mini = j;
+            minMa.second = j - 1;
+        } else {
+            minMa.first = j + 1;
+        }
+    }
+    if (mini != 0) return mini;
     return -1;
 }
 
