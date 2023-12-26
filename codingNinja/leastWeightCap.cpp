@@ -1,6 +1,6 @@
 #include<iostream>
 #include<vector>
-
+#include<numeric>
 using namespace std;
 
 bool possi(vector<int> &weights, int d, int cap) {
@@ -27,18 +27,34 @@ bool possi(vector<int> &weights, int d, int cap) {
 }
 
 // Brute force method
+// int leastWeightCapacity(vector<int> &weights, int d) {
+//     // Write your code here.
+//     int maxi = *max_element(weights.begin(), weights.end());
+//     while (true) {
+//         if (possi(weights, d, maxi)) {
+//             return maxi;
+//         } 
+//         else {
+//             maxi++;
+//         }
+//     }
+//     return -1;
+// }
+
+// Binary Search
 int leastWeightCapacity(vector<int> &weights, int d) {
-    // Write your code here.
-    int maxi = *max_element(weights.begin(), weights.end());
-    while (true) {
-        if (possi(weights, d, maxi)) {
-            return maxi;
-        } 
-        else {
-            maxi++;
+    int low = *max_element(weights.begin(), weights.end());
+    int high = accumulate(weights.begin(), weights.end(), 0);
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (possi(weights, d, mid)) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
         }
+        
     }
-    return -1;
+    return low;
 }
 
 int main()
