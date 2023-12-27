@@ -34,7 +34,7 @@ using namespace std;
 //     }
 //     return maxi+(k-cnt);
 // }
-
+// Binary search
 int missingK(vector<int> v, int n, int k) {
     int low = 0, high = n - 1;
     while (low <=  high) {
