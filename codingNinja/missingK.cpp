@@ -17,7 +17,7 @@ int findNum(vector<int> v, int l) {
     }
     return -1;
 }
-
+// Brute Force
 int missingK(vector < int > vec, int n, int k) {
     int cnt = 0;
     int maxi = vec[vec.size() - 1];
