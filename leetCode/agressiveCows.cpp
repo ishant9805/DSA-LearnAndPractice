@@ -36,6 +36,24 @@ bool isPoss(vector<int> &stalls, int a, int k) {
 //     return maxa - 1;
 // }
 
+int aggressiveCows(vector<int> &stalls, int k) {
+    sort(stalls.begin(), stalls.end());
+    int high = stalls[stalls.size() - 1];
+    int low = 1;
+    while(low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (isPoss(stalls, mid, k))
+        {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+    return high;
+}
+
 int main()
 {
     vector<int> v = {1,2,3};
