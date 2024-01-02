@@ -1,5 +1,5 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -24,6 +24,6 @@ int main()
     // vector<int> v = {1, 2, 3, 4, 5, 6, 7};
     vector<int> v = {1, 3, 7, 9, 11, 12, 45};
     int k = search(v, 3);
-    cout << k << endl;
+    cout << "Output: " << k << endl;
     return 0;
 }

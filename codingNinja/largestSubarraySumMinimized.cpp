@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<numeric>
-
+#include<bits/stdc++.h>
 using namespace std;
 
 int parts(vector<int> &vec, int maxSum) {

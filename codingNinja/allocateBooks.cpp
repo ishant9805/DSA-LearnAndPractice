@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<numeric>
+#include<bits/stdc++.h>
 
 using namespace std;
 
