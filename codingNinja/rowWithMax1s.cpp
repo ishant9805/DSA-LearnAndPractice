@@ -2,15 +2,40 @@
 
 using namespace std;
 
-int rowWithMax1s(vector<vector<int>> &matrix, int n, int m)
-{
+// int rowWithMax1s(vector<vector<int>> &matrix, int n, int m)
+// {
+//     int maxCnt = 0, row = -1;
+//     for (int i = 0; i < n; i++) {
+//         int cnt = 0;
+//         for (int j = 0; j < m; j++)
+//         {
+//             if (matrix[i][j] == 1) {
+//                 cnt++;
+//             }
+//         }
+//         if (cnt > maxCnt) {
+//             maxCnt = cnt;
+//             row = i;
+//         }
+//     }
+//     return row;
+// }
+
+// Binary Search
+int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
     int maxCnt = 0, row = -1;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         int cnt = 0;
-        for (int j = 0; j < m; j++)
+        int low = 0, high = m - 1;
+        while (low <= high)
         {
-            if (matrix[i][j] == 1) {
-                cnt++;
+            int mid = (low + high) >> 1;
+            if (matrix[i][mid] == 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+                cnt = m - mid;
             }
         }
         if (cnt > maxCnt) {
