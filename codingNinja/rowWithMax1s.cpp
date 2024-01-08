@@ -28,6 +28,8 @@ int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
     {
         int cnt = 0;
         int low = 0, high = m - 1;
+        if (matrix[i][low] == 1) return i;
+        if (matrix[i][high] == 0) continue;
         while (low <= high)
         {
             int mid = (low + high) >> 1;
