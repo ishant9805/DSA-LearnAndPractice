@@ -2,25 +2,36 @@
 
 using namespace std;
 
-bool searchElement(vector<vector<int>> &mat, int target, int j) {
-    int high = mat.size() - 1, low = 0;
-    while (low <= high)
-    {
-        int mid = (low + high) >> 1;
-        if (mat[mid][j] == target) return true;
-        else if (mat[mid][j] < target) low = mid + 1;
-        else high = mid - 1;
-    }
-    return false;    
-}
+// bool searchElement(vector<vector<int>> &mat, int target, int j) {
+//     int high = mat.size() - 1, low = 0;
+//     while (low <= high)
+//     {
+//         int mid = (low + high) >> 1;
+//         if (mat[mid][j] == target) return true;
+//         else if (mat[mid][j] < target) low = mid + 1;
+//         else high = mid - 1;
+//     }
+//     return false;    
+// }
 
-bool searchMatrix(vector<vector<int>>& matrix, int target) {
-    int colSize = matrix[0].size();
-    for (int j = 0; j < colSize; j++)
-    {
-        if (searchElement(matrix, target, j)) {
-            return true;
-        }
+// bool searchMatrix(vector<vector<int>>& matrix, int target) {
+//     int colSize = matrix[0].size();
+//     for (int j = 0; j < colSize; j++)
+//     {
+//         if (searchElement(matrix, target, j)) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+bool searchMatrix(vector<vector<int>> &matrix, int target) {
+    int row = 0;
+    int col = matrix[0].size() - 1;
+    while(row < matrix.size() && col >= 0) {
+        if (matrix[row][col] > target) col--;
+        else if (matrix[row][col] < target) row++;
+        else return true;
     }
     return false;
 }
