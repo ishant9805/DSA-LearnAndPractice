@@ -3,7 +3,8 @@
 using namespace std;
 
 vector<int> findPeakGrid(vector<vector<int>> &g){
-
+    int rowSz = g.size();
+    int colSz = g[0].size();
 }
 
 int main() {
