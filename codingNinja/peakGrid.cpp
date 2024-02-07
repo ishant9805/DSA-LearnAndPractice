@@ -5,6 +5,36 @@ using namespace std;
 vector<int> findPeakGrid(vector<vector<int>> &g){
     int rowSz = g.size();
     int colSz = g[0].size();
+
+    int row = rowSz / 2;
+    int col = colSz / 2;
+    while(true) {
+        int num = g[row][col];
+        int up = row - 1 >= 0 ? g[row - 1][col] : -1;
+        int down = row + 1 < rowSz ? g[row + 1][col] : -1;
+        int left = col - 1 >= 0 ? g[row][col - 1] : -1;
+        int right = col + 1 < colSz ? g[row][col + 1] : -1;
+        if (num > up) {
+            if (num > down){
+                if (num > left) {
+                    if (num > right) {
+                        return {row, col};
+                    } else {
+                        col = col + 1;
+                        continue;
+                    }
+                } else {
+                    col = col - 1;
+                    continue;
+                }
+            } else {
+                row = row + 1;
+                continue;
+            }
+        } else {
+            row = row - 1;
+        }
+    }
 }
 
 int main() {
