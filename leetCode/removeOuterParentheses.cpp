@@ -18,15 +18,18 @@ string removeOuterParentheses(string s) {
                 st = true;
             }
             cnt++;
-            break;
+            break; // "(()())(())"
         
         case ')':
             cnt--;
             if (cnt == 0 && st) {
                 s.erase(s.begin()+index);
+                i--;
                 s.erase(s.begin() + i);
-                i -= 2;
+                i--;
+                len -= 2;
                 index = 0;
+                st = false;
             }
         }
     }
