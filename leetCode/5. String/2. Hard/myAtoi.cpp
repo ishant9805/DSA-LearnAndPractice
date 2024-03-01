@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int createAtoi(string s) {
+int myAtoi(string s) {
     int len = s.length();
     if (len == 0) return 0;
     int i = 0;
@@ -31,8 +31,8 @@ int createAtoi(string s) {
 int main() {
     cout << "Starting Program" << endl;
     string s = "45rohit12";
-    cout << createAtoi(s) << endl;
+    cout << myAtoi(s) << endl;
     s = "   -72xyz";
-    cout << createAtoi(s) << endl;
+    cout << myAtoi(s) << endl;
     return 0;
 }
