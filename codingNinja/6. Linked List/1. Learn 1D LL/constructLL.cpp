@@ -20,6 +20,17 @@ class Node
         }
 };
 
+Node* constructLL(vector<int>& arr) {
+    int len = arr.size();
+    Node* prev = new Node(arr[0], nullptr);
+    Node* res = prev;
+    for (int i = 1; i < len; i++) {
+        Node *temp = new Node(arr[i]);
+        prev -> next = temp;
+        prev = temp;
+    }
+    return res;
+}
 
 int main() {
     cout << "Starting Program" << endl;
