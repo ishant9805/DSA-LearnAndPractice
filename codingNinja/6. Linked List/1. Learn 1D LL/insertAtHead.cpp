@@ -20,22 +20,13 @@ class Node
         }
 };
 
-Node* constructLL(vector<int>& arr) {
-    int len = arr.size();
-    Node* prev = new Node(arr[0], nullptr);
-    Node* head = prev;
-    for (int i = 1; i < len; i++) {
-        Node *temp = new Node(arr[i]);
-        prev -> next = temp;
-        prev = temp;
-    }
-    return head;
+Node* insertAtFirst(Node* list, int newValue) {
+    Node* newNode = new Node(newValue, list);
+    return newNode;
 }
 
 int main() {
     cout << "Starting Program" << endl;
-    int x = 5;
-    Node *y = new Node(x);
-    cout << y->data << endl;
+    
     return 0;
 }
