@@ -24,24 +24,43 @@ public:
     }
 };
 
-Node* reverseLinkedList(Node *head)
-{
-    if (head == NULL || head->next == NULL) {
-        return head;
+// Stack Method
+// Node* reverseLinkedList(Node *head){
+//     if (head == NULL || head->next == NULL) {
+//         return head;
+//     }
+//     Node* tmp = head;
+//     stack<int> st;
+//     while(tmp != NULL) {
+//         st.push(tmp->data);
+//         tmp = tmp->next;
+//     }
+//     tmp = head;
+//     while(tmp != NULL) {
+//         tmp->data = st.top();
+//         st.pop();
+//         tmp = tmp->next;
+//     }
+//     return head;
+// }
+
+// Recursive Method
+// Node* reverseLinkedList(Node* head) {
+    
+// }
+
+// Using Loop
+Node* reverseLinkedList(Node* head) {
+    Node* curr = head;
+    Node* prev = NULL;
+    while (curr != NULL)
+    {
+        Node* front = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = front;
     }
-    Node* tmp = head;
-    stack<int> st;
-    while(tmp != NULL) {
-        st.push(tmp->data);
-        tmp = tmp->next;
-    }
-    tmp = head;
-    while(tmp != NULL) {
-        tmp->data = st.top();
-        st.pop();
-        tmp = tmp->next;
-    }
-    return head;
+    return prev;    
 }
 
 Node* constructLL(vector<int>& arr) {
