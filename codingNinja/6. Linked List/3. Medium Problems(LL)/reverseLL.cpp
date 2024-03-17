@@ -45,22 +45,29 @@ public:
 // }
 
 // Recursive Method
-// Node* reverseLinkedList(Node* head) {
-// }
+Node* reverseLinkedList(Node* head) {
+    if (head == NULL || head->next == NULL) return head;
+
+    Node* nH = reverseLinkedList(head->next);
+    Node* front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return nH;
+}
 
 // Using Loop
-Node* reverseLinkedList(Node* head) {
-    Node* curr = head;
-    Node* prev = NULL;
-    while (curr != NULL)
-    {
-        Node* front = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = front;
-    }
-    return prev;    
-}
+// Node* reverseLinkedList(Node* head) {
+//     Node* curr = head;
+//     Node* prev = NULL;
+//     while (curr != NULL)
+//     {
+//         Node* front = curr->next;
+//         curr->next = prev;
+//         prev = curr;
+//         curr = front;
+//     }
+//     return prev;    
+// }
 
 Node* constructLL(vector<int>& arr) {
     int len = arr.size();
