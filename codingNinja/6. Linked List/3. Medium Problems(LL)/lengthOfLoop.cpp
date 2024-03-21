@@ -25,18 +25,39 @@ public:
     }
 };
 
-int lengthOfLoop(Node *head){
-    map<Node *, int> mpp;
-    Node* curr = head;
-    int n = 0;
-    while(curr != NULL && curr->next != NULL) {
-        if (mpp.find(curr) != mpp.end()) {
-            int d = distance(mpp.begin(), mpp.find(curr));
-            return n - d;
-        }
-        n++;
-        mpp[curr] = 1;
-        curr = curr->next;
+// Hashmap method
+// int lengthOfLoop(Node *head){
+//     map<Node *, int> mpp;
+//     Node* curr = head;
+//     int n = 0;
+//     while(curr != NULL && curr->next != NULL) {
+//         if (mpp.find(curr) != mpp.end()) {
+//             int d = distance(mpp.begin(), mpp.find(curr));
+//             return n - d;
+//         }
+//         n++;
+//         mpp[curr] = 1;
+//         curr = curr->next;
+//     }
+//     return 0;
+// }
+
+// Totoise-Hare method
+int lengthOfLoop(Node *head) {
+    Node *slow = head;
+    Node *fast = head;
+    int c = 0;
+    while(fast && fast->next) {
+        slow = slow->next; 
+        fast = fast->next->next;
+        if (slow == fast) {
+            fast = fast->next;
+            while (slow != fast) {
+                c++;
+                fast = fast->next;
+            }
+            return c;
+        } 
     }
     return 0;
 }
