@@ -12,33 +12,51 @@ struct ListNode {
 ListNode* constructLL(vector<int>& arr);
 void PrintLL(ListNode* head);
 
-ListNode* removeNthFromEnd(ListNode* head, int K)
-{
-    ListNode* tmp = head;
-    stack<ListNode*> st;
-    while(tmp) {
-        st.push(tmp);
-        tmp = tmp->next;
+// Naive Solution
+// ListNode* removeNthFromEnd(ListNode* head, int K) {
+//     ListNode* tmp = head;
+//     stack<ListNode*> st;
+//     while(tmp) {
+//         st.push(tmp);
+//         tmp = tmp->next;
+//     }
+//     int i = 0;
+//     while(i != K) {
+//         st.pop();
+//         i++;
+//     }
+//     if (st.size() == 0) {
+//         return head->next;
+//     }
+//     tmp = st.top();
+//     tmp->next = tmp->next->next;
+//     return head;
+// }
+
+// Optimal Solution
+ListNode* removeNthFromEnd(ListNode* head, int K) {
+    ListNode* fast = head;
+    ListNode* slow = head;
+    for (int i = 0; i < K; i++) {
+        fast = fast->next;
     }
-    int i = 0;
-    while(i != K) {
-        st.pop();
-        i++;
+    if (fast == NULL) return head->next;
+    while(fast->next != NULL) {
+        fast = fast->next;
+        slow = slow->next;
     }
-    if (st.size() == 0) {
-        return head->next;
-    }
-    tmp = st.top();
-    tmp->next = tmp->next->next;
+    ListNode* delN = slow->next;
+    slow->next = slow->next->next;
+    delete delN;
     return head;
 }
 
 int main() {
     cout << "Starting Program" << endl;
-    vector<int> v1 = {1,2,3,4,5,6};
+    vector<int> v1 = {1,2,3,4,5};
     ListNode* head = constructLL(v1);
     PrintLL(head);
-    head = removeNthFromEnd(head, 3);
+    head = removeNthFromEnd(head, 2);
     PrintLL(head);
     return 0;
 }

@@ -25,24 +25,43 @@ public:
 Node* constructLL(vector<int>& arr);
 void PrintLL(Node* head);
 
-Node* removeKthNode(Node* head, int K)
-{
-    Node* tmp = head;
-    stack<Node*> st;
-    while(tmp) {
-        st.push(tmp);
-        tmp = tmp->next;
+// Naive Solution
+// Node* removeKthNode(Node* head, int K)
+// {
+//     Node* tmp = head;
+//     stack<Node*> st;
+//     while(tmp) {
+//         st.push(tmp);
+//         tmp = tmp->next;
+//     }
+//     int i = 0;
+//     while(i != K) {
+//         st.pop();
+//         i++;
+//     }
+//     if (st.size() == 0) {
+//         return head->next;
+//     }
+//     tmp = st.top();
+//     tmp->next = tmp->next->next;
+//     return head;
+// }
+
+// Optimal
+Node* removeKthNode(Node* head, int K) {
+    Node* fast = head;
+    Node* slow = head;
+    for (int i = 0; i < K; i++) {
+        fast = fast->next;
     }
-    int i = 0;
-    while(i != K) {
-        st.pop();
-        i++;
+    if (fast == NULL) return head->next;
+    while(fast->next != NULL) {
+        fast = fast->next;
+        slow = slow->next;
     }
-    if (st.size() == 0) {
-        return head->next;
-    }
-    tmp = st.top();
-    tmp->next = tmp->next->next;
+    Node* delN = slow->next;
+    slow->next = slow->next->next;
+    delete delN;
     return head;
 }
 
