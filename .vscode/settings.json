@@ -9,6 +9,7 @@
         "ostream": "cpp",
         "numeric": "cpp",
         "xutility": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ratio": "cpp"
     }
 }
