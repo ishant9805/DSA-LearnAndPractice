@@ -2,11 +2,12 @@
 
 using namespace std;
 
-bool helper(int x, int digit) {
-    if (x == digit) return false;
-    if (x < 10) return true;
-    if (x%10 != digit && x%10 < (x % 100)/10) {
-        return helper(x/10, digit);
+bool helper(int x, int digit, int sum) {
+    if (x == 0) return true;
+    int last = x % 10;
+    if (last > sum && last != digit) {
+        sum += last;
+        return helper(x/10, digit, sum);
     }
     return false;
 }
@@ -14,7 +15,8 @@ bool helper(int x, int digit) {
 vector<int> goodNumbers(int a, int b, int digit) {
 	vector<int> ans;
     for (int i = a; i <= b; i++) {
-        if (helper(i, digit)) ans.push_back(i);
+        if (i % 10 == digit) continue;
+        if (helper(i/10, digit, i%10)) ans.push_back(i);
     }
     return ans;
 }
