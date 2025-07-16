@@ -14,5 +14,14 @@
         "array": "cpp",
         "string": "cpp",
         "string_view": "cpp"
-    }
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false
+    },
+    "files.autoSave": "afterDelay"
+    
 }

@@ -1,21 +1,22 @@
 {
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
-            "command": "C:\\MinGW\\bin\\g++.exe",
+            "icon": {"color": "terminal.ansiCyan", "id": "circuit-board"},
+            "type": "shell",
+            "label": "C/C++: cl.exe build active file",
+            "command": "cl.exe",
             "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "-o",
-                "${workspaceFolder}\\.exe\\${fileBasenameNoExtension}.exe"
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/Fe${fileDirname}\\..\\.executables\\${fileBasenameNoExtension}.exe",
+                "${file}"
             ],
             "options": {
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc"
+                "$msCompile"
             ],
             "group": {
                 "kind": "build",
